@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "l4LgixCtpcg91CEUpE1a/5XIV2sSwvJq49xSJgY7uvq8k6+QWlsRivqi7rfr2HHUjD1S7IP2CB2z7bg8BoXfpQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hackerman\\source\\repos\\TanQyou(PumpTransaction)\\TanQyou-PumpTransaction--By-EmilisValivonis\\TanQyou(PumpTransaction)\\TanQyou(PumpTransaction).csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hackerman\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512"
+  ],
+  "logs": []
+}
