@@ -48,23 +48,32 @@ internal class Program
         }
     }
 
-    static void GetFuelPrices()
+      static void GetFuelPrices()
     {
-        HtmlAgilityPack.HtmlWeb website = new HtmlAgilityPack.HtmlWeb();
-        HtmlAgilityPack.HtmlDocument document = website.Load("https://carbu.com//belgie/maximumprijs");
+        try
+        {
+            HtmlAgilityPack.HtmlWeb website = new HtmlAgilityPack.HtmlWeb();
+            HtmlAgilityPack.HtmlDocument document = website.Load("https://carbu.com//belgie/maximumprijs");
 
-        Dictionary<string, string> fuelTableRowNumber = new Dictionary<string, string>(){
+            Dictionary<string, string> fuelTableRowNumber = new Dictionary<string, string>(){
             { "95", "1" },
             { "98", "2" },
             { "Diesel", "4" }
         };
 
-        foreach (KeyValuePair<string, string> fuel in fuelTableRowNumber)
-        {
-            HtmlNode node = document.DocumentNode.SelectSingleNode($" //*[@id=\"news\"]/div/div/table[1]/tbody/tr[{fuel.Value}]/td[2]");
-            double price = double.Parse(node.InnerText.Remove(7).Replace(",", "."));
-            fuelPrices[fuel.Key] = price;
+            foreach (KeyValuePair<string, string> fuel in fuelTableRowNumber)
+            {
+                HtmlNode node = document.DocumentNode.SelectSingleNode($" //*[@id=\"news\"]/div/div/table[1]/tbody/tr[{fuel.Value}]/td[2]");
+                double price = double.Parse(node.InnerText.Remove(7).Replace(",", "."));
+                fuelPrices[fuel.Key] = price;
+            }
+            
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
     }
 
     static void OnTimedEvent(object source, ElapsedEventArgs e)
